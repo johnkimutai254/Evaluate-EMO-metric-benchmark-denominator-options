@@ -315,7 +315,6 @@ Activision has **no** trusted claims feed. Warehouse outreach is tiny and **not*
 | Question | Recommendation|
 |----------|-----------------|
 | Use Outreach list as-is on with-claims clients? | Yes -- claims filter barely moves the count |
-| How to size without-claims clients? | `n_addressable_recommended` by segment, not warehouse outreach |
-| Accounts to spot-check? | **Wellmark** (large no-claims estimate, zero outreach), **Schwan's** and **Avergent** (with-claims outreach vs paid-claims gap) |
+| How to size without-claims clients? | `n_addressable_recommended` by segment, not outreach |
 
 ---
