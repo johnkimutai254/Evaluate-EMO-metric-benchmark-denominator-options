@@ -235,7 +235,7 @@ Compare denominators using the three eligible columns and `pct_*_on_distinct_eve
 
 ## Examples
 
-Two clients from run `20260621` illustrate the two sizing paths. Use **[emo_addressable_client_reporting_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_client_reporting_2025-01-01_2026-01-01_20260621.xlsx)** to look up any other client the same way.
+Two clients from test run illustrate the two sizing paths. Use **[emo_addressable_client_reporting_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_client_reporting_2025-01-01_2026-01-01_20260621.xlsx)** to look up any other client the same way.
 
 **BR default:** use **`n_avg_members_eligible`** and **`pct_addressable_recommended_on_avg_monthly_br`** so addressable rates align with cEMO engagement funnel (`engagement.sql`).
 
