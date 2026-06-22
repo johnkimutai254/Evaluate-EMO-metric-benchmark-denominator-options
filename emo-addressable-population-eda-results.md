@@ -319,9 +319,3 @@ Activision has **no** trusted claims feed. Warehouse outreach is tiny and **not*
 | Accounts to spot-check? | **Wellmark** (large no-claims estimate, zero outreach), **Schwan's** and **Avergent** (with-claims outreach vs paid-claims gap) |
 
 ---
-
-## Limitations
-
-Addressable here means **targeting pool**, not engaged or converted members. Portfolio totals sum at the client level -- planning numbers, not a deduplicated national headcount. No-claims estimates are directional and assume peers in the same segment are comparable. **Wellmark** and other large no-claims accounts can dominate the recommended total. Medians describe a typical client; large employers drive portfolio totals.
-
----
