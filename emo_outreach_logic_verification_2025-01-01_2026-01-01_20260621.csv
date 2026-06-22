@@ -1,6 +1,0 @@
-finding,value,evidence
-explicit_claims_in_outreach_rule,No,Allison list = three riskassessment codes only
-claims_used_in_flag_assignment,"Yes (HIGH_COST, MSK_NEURO); Mostly (COMPLEX_PATIENTS)",EMO Segments for outreach doc
-n_outreach_members_portfolio,489443,emo_outreach_member_list
-n_outreach_on_without_claims_clients,823,Should be low if HIGH_COST/MSK_NEURO require claims feed
-pct_outreach_with_paid_claims_cy2025_with_claims_clients,0.9854,Empirical overlap; not a definition of outreach
