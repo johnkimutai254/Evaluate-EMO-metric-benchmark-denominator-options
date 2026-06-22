@@ -57,7 +57,7 @@ flowchart TD
 | `is_cemo_base` | Core EMO only (TRUE) vs Nav + Core EMO (FALSE) |
 | `client_benchmark_segment` | Four-way segment for benchmarking |
 | `client_workstream` | `WITH_CLAIMS` / `WITHOUT_CLAIMS` |
-| `n_outreach_members` | Members on Allison outreach list |
+| `n_outreach_members` | Members on outreach list |
 | `n_addressable_paid` | Outreach + paid CY2025 claims (observed) |
 | `n_addressable_recommended` | **Official sizing field** |
 | `n_eligible_distinct_members` | Denom A: anyone eligible any month in CY2025 |
@@ -75,7 +75,7 @@ Use **`pct_addressable_recommended_on_avg_monthly_br`** when comparing to cEMO B
 
 We ran a segmented EDA on the CY2025 EMO book to size the addressable population for outreach -- split by clients **with claims** vs **without claims**, and by **base cEMO** vs **Nav + Core EMO**, because those cohorts behave differently in the warehouse and in reporting.
 
-We rebuilt Allison Kim's outreach list from three risk assessments while eligible in the same calendar month: `COMPLEX_PATIENTS`, `MSK_NEURO`, and `HIGH_COST`. For clients with claims, we tested whether adding a paid-claims filter meaningfully changes the pool. For clients without claims, we benchmarked against **with-claims peers in the same segment** using the **avg monthly eligible** denominator (Core EMO funnel).
+We rebuilt outreach list from three risk assessments while eligible in the same calendar month: `COMPLEX_PATIENTS`, `MSK_NEURO`, and `HIGH_COST`. For clients with claims, we tested whether adding a paid-claims filter meaningfully changes the pool. For clients without claims, we benchmarked against **with-claims peers in the same segment** using the **avg monthly eligible** denominator (Core EMO funnel).
 
 ---
 
@@ -90,7 +90,7 @@ We rebuilt Allison Kim's outreach list from three risk assessments while eligibl
 | Nav + Core EMO clients (`has_nav`) | 13 |
 | CY2025 eligibles (avg monthly -- primary) | 4.13M |
 | CY2025 eligibles (distinct ever-eligible) | 3.22M |
-| On Allison's outreach list (warehouse, client sum) | 491K |
+| On outreach list (warehouse, client sum) | 491K |
 | **Recommended addressable** | **858K** |
 | Recommended as % of avg monthly eligible | 20.8% |
 | Observed addressable (with-claims only) | 483K |
@@ -184,7 +184,7 @@ Median = typical client (not lives-weighted). Portfolio = lives-weighted across 
 ### Summary notes
 
 - **Headline:** About **858K members** recommended addressable for CY2025 -- **483K** observed on with-claims clients and **376K** estimated on without-claims clients using segment benchmarks on **avg monthly eligible**.
-- **With claims:** Allison's list is effectively ready to use. A paid-claims filter only trims **~1.5%** because **98.5%** of outreach-list members already have paid claims in CY2025.
+- **With claims:** Outreach list is effectively ready to use. A paid-claims filter only trims **~1.5%** because **98.5%** of outreach-list members already have paid claims in CY2025.
 - **Without claims:** Do not use the warehouse outreach count (**824**) for sizing. Use **`n_addressable_recommended`** with the segment benchmark (`benchmark_median_pct` in the export).
 - **Segment benchmarking:** `CEMO_BASE` without-claims clients benchmark at **20.8%**; `NAV_PLUS_CEMO` without-claims at **26.2%** -- not one book-wide rate.
 - **Wellmark drives no-claims volume:** Largest recommended addressable account (**271K**) is a no-claims base cEMO client with **zero** warehouse outreach members -- review before external use.
@@ -314,7 +314,7 @@ Activision has **no** trusted claims feed. Warehouse outreach is tiny and **not*
 
 | Question | Recommendation|
 |----------|-----------------|
-| Use Allison's list as-is on with-claims clients? | Yes -- claims filter barely moves the count |
+| Use Outreach list as-is on with-claims clients? | Yes -- claims filter barely moves the count |
 | How to size without-claims clients? | `n_addressable_recommended` by segment, not warehouse outreach |
 | Accounts to spot-check? | **Wellmark** (large no-claims estimate, zero outreach), **Schwan's** and **Avergent** (with-claims outreach vs paid-claims gap) |
 
