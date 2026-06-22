@@ -14,6 +14,7 @@
 | 2c | **BR reporting table** | [emo_addressable_client_reporting_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_client_reporting_2025-01-01_2026-01-01_20260621.xlsx) |
 | 3 | **Logic verification** | [docs/emo-outreach-logic-verification.md](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo-outreach-logic-verification.md) and [emo_outreach_logic_verification_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_outreach_logic_verification_2025-01-01_2026-01-01_20260621.csv) |
 | 4 | **SQL** | [emo_addressable_eda.sql](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable.sql) |
+| 5 | **EDA Notebook** | [emo_addressable_eda_notebook](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_population_eda.ipynb)
 
 
 ---
