@@ -1,6 +1,5 @@
 # EMO addressable population -- EDA results (CY2025)
 
-**Run:** 2026-06-21 | CY2025 (`2025-01-01` through end of year) | Notebook: `emo_addressable_population_eda.ipynb`
 
 ---
 
@@ -8,24 +7,20 @@
 
 | # | Artifact | Location |
 |---|----------|----------|
-| 1 | **This write-up** | `docs/emo-addressable-population-eda-results.md` |
-| 2 | **Client-level sizing** | `query_data/emo_addressable/emo_addressable_client_eda_2025-01-01_2026-01-01_20260621.csv` |
-| 2a | **Segment benchmarks** | `query_data/emo_addressable/emo_addressable_segment_benchmarks_2025-01-01_2026-01-01_20260621.csv` |
-| 2b | **Clients by segment (4 files)** | `emo_addressable_clients_with_claims__cemo_base_*.csv`, `..._with_claims__nav_plus_cemo_*.csv`, `..._without_claims__cemo_base_*.csv`, `..._without_claims__nav_plus_cemo_*.csv` |
-| 2c | **BR reporting table (recommended for decks)** | `query_data/emo_addressable/emo_addressable_client_reporting_*.csv` |
-| 3 | **Member outreach list** | `query_data/emo_addressable/emo_outreach_member_list_2025-01-01_2026-01-01_20260621.csv` (large -- only pull if you need member IDs) |
-| 4 | **Logic verification** | `docs/emo-outreach-logic-verification.md` and `query_data/emo_addressable/emo_outreach_logic_verification_*.csv` |
-| 5 | **SQL** | `queries/emo_nav_br/emo_addressable_eda.sql` |
+| 1 | **This write-up** | [emo-addressable-population-eda-results.md](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo-addressable-population-eda-results.md) |
+| 2 | **Client-level sizing** | [emo_addressable_client_eda_2025-01-01_2026-01-01_20260621.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_client_eda_2025-01-01_2026-01-01_20260621.csv) |
+| 2a | **Segment benchmarks** | [emo_addressable_segment_benchmarks_2025-01-01_2026-01-01_20260621.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_segment_benchmarks_2025-01-01_2026-01-01_20260621.csv) |
+| 2b | **Clients by segment (4 files)** | [emo_addressable_clients_with_claims__cemo_base_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_clients_with_claims__cemo_base_2025-01-01_2026-01-01_20260621.csv), [..._with_claims__nav_plus_cemo_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_clients_with_claims__nav_plus_cemo_2025-01-01_2026-01-01_20260621.csv), [..._without_claims__cemo_base_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_clients_without_claims__cemo_base_2025-01-01_2026-01-01_20260621.csv), [..._without_claims__nav_plus_cemo_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_clients_without_claims__nav_plus_cemo_2025-01-01_2026-01-01_20260621.csv) |
+| 2c | **BR reporting table** | [emo_addressable_client_reporting_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_client_reporting_2025-01-01_2026-01-01_20260621.xlsx) |
+| 3 | **Logic verification** | [docs/emo-outreach-logic-verification.md](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo-outreach-logic-verification.md) and [emo_outreach_logic_verification_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_outreach_logic_verification_2025-01-01_2026-01-01_20260621.csv) |
+| 4 | **SQL** | [emo_addressable_eda.sql](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable.sql) |
 
-The notebook is only needed if you're re-running the analysis.
 
 ---
 
 ## Analysis logic (addressable population)
 
 **Member-first:** outreach identifies **members** → members roll up to **EMO parent** → parent carries `is_cemo_base` and claims flags → addressable → client reporting.
-
-Lucid-ready flowchart (CSV + Mermaid + shape list): **`docs/emo-addressable-flowchart-lucid.md`** and **`docs/emo-addressable-flowchart-lucid.csv`**
 
 ```mermaid
 flowchart TD
@@ -45,8 +40,6 @@ flowchart TD
     K --> M([emo_addressable_client_reporting.csv])
     L --> M
 ```
-
-**Why `is_cemo_base` is connected to outreach:** it labels the **EMO parent**, not a separate client list. Every outreach member is attributed to a parent in step 3 and inherits that parent's `is_cemo_base` and segment.
 
 | Step | Rule |
 |------|------|
@@ -122,8 +115,6 @@ Same numerators across all three denominators (outreach list, strict addressable
 | **Avg monthly eligible (primary)** | **4.13M** | **11.9%** | **11.7%** | **20.8%** |
 | End-of-period eligible (Dec 2025) | 3.99M | 12.3% | 12.1% | 21.5% |
 
-Rates are **lower** on distinct ever-eligible than on avg monthly because the distinct base is wider (anyone eligible in any CY2025 month).
-
 ### Segment grid: addressable by claims x base cEMO
 
 | Segment | Clients | Avg monthly eligibles | Outreach list | Addressable (strict) | **Recommended addressable** | Benchmark median |
@@ -154,7 +145,7 @@ Rates are **lower** on distinct ever-eligible than on avg monthly because the di
 |---|------------:|---------------:|----------:|
 | Parent accounts | 42 | 60 | **102** |
 | Avg monthly eligibles | 2.36M | 1.77M | **4.13M** |
-| On Allison's outreach list | 490K | 824 | -- |
+| On outreach list | 490K | 824 | -- |
 | Observed addressable (strict) | **483K** | 0 | **483K** |
 | **Recommended addressable** | **483K** | **376K** | **858K** |
 | How sized | Observed in warehouse | Segment benchmark x avg monthly eligible | Mixed |
@@ -164,7 +155,7 @@ Rates are **lower** on distinct ever-eligible than on avg monthly because the di
 
 | Metric | Value |
 |--------|------:|
-| Members on Allison's outreach list | 490K |
+| Members on outreach list | 490K |
 | Members with outreach + paid claims in CY2025 | 483K |
 | Members removed by claims filter | 7.1K (1.5%) |
 | Share of outreach list with paid CY2025 claims | 98.5% |
@@ -211,7 +202,7 @@ Median = typical client (not lives-weighted). Portfolio = lives-weighted across 
 
 ## What's driving the outreach list
 
-Allison's rule is an OR across three codes. Portfolio-wide, `MSK_NEURO` is the largest contributor (~**382K** member-slots), followed by `HIGH_COST` (~**225K**) and `COMPLEX_PATIENTS` (~**68K**). Those counts overlap.
+Outreach rule is an OR across three codes. Portfolio-wide, `MSK_NEURO` is the largest contributor (**approx.382K** member-slots), followed by `HIGH_COST` (**approx.225K**) and `COMPLEX_PATIENTS` (**approx.68K**). Those counts overlap.
 
 On no-claims clients, warehouse outreach is only **824** members -- risk flags that need claims barely fire without a claims feed.
 
@@ -227,7 +218,7 @@ On no-claims clients, warehouse outreach is only **824** members -- risk flags t
 
 ## How to use the client export
 
-**For BR / stakeholder reporting:** use `emo_addressable_client_reporting_*.csv` (Step 7b).
+**For BR / stakeholder reporting:** use `emo_addressable_client_reporting_*.csv`.
 
 **For full warehouse fields:** use `emo_addressable_client_eda_*.csv`.
 
@@ -239,6 +230,72 @@ The official sizing field is **`n_addressable_recommended`**.
 | **Without claims** | `n_avg_members_eligible` x segment `benchmark_median_pct` |
 
 Compare denominators using the three eligible columns and `pct_*_on_distinct_ever` / `pct_*_on_avg_monthly_br` / `pct_*_on_eop_dec` in the reporting table.
+
+---
+
+## Examples
+
+Two clients from run `20260621` illustrate the two sizing paths. Use **[emo_addressable_client_reporting_*.csv](https://github.com/johnkimutai254/Evaluate-EMO-metric-benchmark-denominator-options/blob/main/emo_addressable_client_reporting_2025-01-01_2026-01-01_20260621.xlsx)** to look up any other client the same way.
+
+**BR default:** use **`n_avg_members_eligible`** and **`pct_addressable_recommended_on_avg_monthly_br`** so addressable rates align with cEMO engagement funnel (`engagement.sql`).
+
+### Side-by-side
+
+| | **Google** | **Activision Blizzard, Inc.** |
+|--|------------|----------------------------------|
+| Segment | `WITH_CLAIMS__NAV_PLUS_CEMO` | `WITHOUT_CLAIMS__CEMO_BASE` |
+| Core EMO only? | No (Nav + cEMO) | Yes (`is_cemo_base`) |
+| Claims feed? | Yes | No |
+| Avg monthly eligible | **242,828** | **10,812** |
+| On outreach list | **76,500** (31.5%) | **6** (0.06%) |
+| Addressable paid (observed) | **76,014** (31.3%) | **0** |
+| **Official addressable** | **76,014** | **2,252** |
+| How sized | Counted in warehouse | 10,812 x 20.8% peer benchmark |
+| Benchmark source | N/A (observed) | Median of 32 with-claims base cEMO peers |
+
+### Google — with claims (observed sizing)
+
+Google has a claims feed, so we **count** addressable members in the warehouse.
+
+1. **Outreach list:** 76,500 members with `COMPLEX_PATIENTS`, `MSK_NEURO`, or `HIGH_COST` while eligible in the same month (~31.5% of avg monthly eligibles).
+2. **Addressable paid (strict):** 76,014 of those also have paid CY2025 claims. Only **486** members drop off (~0.6%) — the outreach list is already claims-informed.
+3. **Official size:** `n_addressable_recommended` = **76,014** (= `n_addressable_paid` for with-claims clients).
+4. **BR rate:** `pct_addressable_recommended_on_avg_monthly_br` = **31.3%** — use this next to engagement/utilization on the same eligible base.
+
+"Google has ~243K avg monthly eligibles. ~76K (~31%) are addressable for EMO outreach — observed in the warehouse, not estimated."
+
+### Activision — without claims (benchmark sizing)
+
+Activision has **no** trusted claims feed. Warehouse outreach is tiny and **not** used for sizing.
+
+1. **Outreach list (warehouse):** only **6** members (~0.06% of eligibles) — flags that need claims barely fire without a claims feed.
+2. **Addressable paid:** **0** — strict observed addressable is not measurable.
+3. **Benchmark:** borrow the median addressable rate from **with-claims base cEMO peers** (`WITH_CLAIMS__CEMO_BASE`): **20.8%** (`benchmark_median_pct`).
+4. **Official size:** `n_addressable_recommended` = 10,812 x 20.8% = **2,252**.
+5. **BR rate:** `pct_addressable_recommended_on_avg_monthly_br` = **20.8%** (by construction from the benchmark).
+
+ "Activision doesn’t have claims in the warehouse, so we estimate **~2,250 addressable members** using the base cEMO with-claims peer median (~21% of avg monthly eligibles). Do not cite the 6 warehouse outreach members as the addressable pool."
+
+### Reading `pct_*` on these two clients
+
+| Field | Google | Activision |
+|-------|-------:|-----------:|
+| `pct_outreach_on_avg_monthly_br` | 31.5% | 0.06% |
+| `pct_addressable_paid_on_avg_monthly_br` | 31.3% | 0% |
+| `pct_addressable_recommended_on_avg_monthly_br` | **31.3%** | **20.8%** |
+
+- **Google:** recommended % ≈ observed paid %.
+- **Activision:** recommended % = benchmark %; outreach % is near zero and misleading for sizing.
+
+### Which export columns to use (any client)
+
+| Need | Column |
+|------|--------|
+| Headline addressable count | `n_addressable_recommended` |
+| BR-aligned rate | `pct_addressable_recommended_on_avg_monthly_br` |
+| BR-aligned eligible base | `n_avg_members_eligible` |
+| Segment / peer group | `client_benchmark_segment`, `benchmark_source_segment` |
+| Warehouse outreach (context only) | `n_outreach_members` |
 
 ---
 
@@ -255,11 +312,10 @@ Compare denominators using the three eligible columns and `pct_*_on_distinct_eve
 
 ## Open questions
 
-| Question | Where we landed |
+| Question | Recommendation|
 |----------|-----------------|
 | Use Allison's list as-is on with-claims clients? | Yes -- claims filter barely moves the count |
 | How to size without-claims clients? | `n_addressable_recommended` by segment, not warehouse outreach |
-| Do the three codes match production Engage? | Pending confirmation from Allison |
 | Accounts to spot-check? | **Wellmark** (large no-claims estimate, zero outreach), **Schwan's** and **Avergent** (with-claims outreach vs paid-claims gap) |
 
 ---
@@ -269,14 +325,3 @@ Compare denominators using the three eligible columns and `pct_*_on_distinct_eve
 Addressable here means **targeting pool**, not engaged or converted members. Portfolio totals sum at the client level -- planning numbers, not a deduplicated national headcount. No-claims estimates are directional and assume peers in the same segment are comparable. **Wellmark** and other large no-claims accounts can dominate the recommended total. Medians describe a typical client; large employers drive portfolio totals.
 
 ---
-
-## Re-run
-
-```bash
-aws-environment production enduser_yellow_production
-cd modules/standard_reports/project_scrappy
-# Run emo_addressable_population_eda.ipynb (Customer Insights Poetry kernel)
-# Re-export in Step 7 / 7b and update the run date in this file
-```
-
-**Latest run (2026-06-21) vs prior (2026-06-17):** Headline recommended addressable **862K -> 858K** (no-claims estimates down ~3K; CEMO_BASE benchmark **21.0% -> 20.8%**). With-claims observed **482K -> 483K** (+576). Eligibility denominators unchanged. One client shifted from without-claims to with-claims (42 / 60 split vs 41 / 61).
