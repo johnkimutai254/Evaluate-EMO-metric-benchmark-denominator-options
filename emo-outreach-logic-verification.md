@@ -60,7 +60,28 @@ Answer the question at **two layers** (do not collapse them):
 | Workstream | Implication |
 |------------|-------------|
 | **Clients with claims** | Outreach volume is **claims-informed** by design. Paid-claims filter in EDA is prioritization, not a new outreach rule. |
-| **Clients without claims** | `HIGH_COST` / `MSK_NEURO` should be rare or absent if claims do not feed risk. `COMPLEX_PATIENTS` may still appear via auth paths. Extrapolation uses **WITH_CLAIMS** benchmark. |
+| **Clients without claims** | `HIGH_COST` / `MSK_NEURO` should be rare or absent if claims do not feed risk. `COMPLEX_PATIENTS` may still appear via auth paths. **Addressable population is not sized** for without-claims clients in the simplified analysis; see book benchmark from with-claims cohort for reference only. |
+
+---
+
+## 4. Empirical checks (notebook Step 8)
+
+Run `emo_addressable_population_eda.ipynb` Step 8 after `client_eda` / `outreach_member_list` loads. Validates doc-based conclusions in data:
+
+1. **Outreach volume by `client_workstream`** -- `WITH_CLAIMS` vs `WITHOUT_CLAIMS`
+2. **Flag mix** on **`WITHOUT_CLAIMS`** clients
+3. **Overlap:** share of outreach members with paid claims in CY2025 on with-claims clients (sanity; most flagged members should already be claims-derived)
+
+Export: `query_data/emo_addressable/emo_outreach_logic_verification_<period>_<date>.csv`
+
+---
+
+## 5. Sign-off checklist
+
+- [ ] Allison confirms three codes match production Engage outreach
+- [ ] Segment doc version matches current Potluck pipeline
+- [ ] Empirical flag mix on no-claims clients reviewed with Growth
+- [ ] Readout uses **Layer A vs Layer B** language (see Section 3)
 
 ---
 
