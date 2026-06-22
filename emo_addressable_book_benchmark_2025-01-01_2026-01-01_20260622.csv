@@ -1,0 +1,2 @@
+benchmark_scope,n_benchmark_clients,n_addressable_observed,n_avg_members_eligible_total,benchmark_pct_portfolio_weighted,benchmark_pct_median_client,benchmark_pct_p25_client,benchmark_pct_p75_client,benchmark_denominator_col,benchmark_pct_col
+WITH_CLAIMS_BOOK,42,482812,2361098.0,0.2045,0.2204,0.1405,0.2621,n_avg_members_eligible,pct_addressable_on_avg_eligible
